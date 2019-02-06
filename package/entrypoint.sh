@@ -8,7 +8,8 @@ docker build -t codehz/stoneserver:latest --no-cache -f - . <<EOF
 FROM scratch
 ADD . /
 VOLUME ["/run/data","/run/game","/tmp"]
-ENV APID unix:/run/apid.socket
-ENTRYPOINT ["/stone"]
+WORKDIR /run
+ENV APID unix:/tmp/apid.socket
+ENTRYPOINT ["/run/stone"]
 EOF
 
